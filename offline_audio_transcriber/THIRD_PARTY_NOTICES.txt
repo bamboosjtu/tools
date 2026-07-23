@@ -1,0 +1,27 @@
+Offline Audio Transcriber includes third-party software.
+
+FFmpeg / imageio-ffmpeg
+-----------------------
+The portable Windows package includes the static FFmpeg executable distributed
+by the imageio-ffmpeg project. The executable's license file is included under:
+
+  third_party/ffmpeg/
+
+FFmpeg project: https://ffmpeg.org/
+Binary wrapper and build information: https://github.com/imageio/imageio-ffmpeg
+
+pywhispercpp / whisper.cpp
+--------------------------
+The application uses pywhispercpp and whisper.cpp under their respective
+open-source licenses. Their package metadata and license files are preserved
+by the Python packaging process.
+
+pywhispercpp: https://github.com/absadiki/pywhispercpp
+whisper.cpp: https://github.com/ggml-org/whisper.cpp
+
+Whisper model
+-------------
+The bundled ggml-small.bin model is the multilingual Whisper small model
+published by the whisper.cpp project. Model information:
+
+  https://huggingface.co/ggerganov/whisper.cpp

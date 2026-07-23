@@ -1,0 +1,28 @@
+usage: transcribe_audio.py [-h] [--model MODEL] [--language LANGUAGE]
+                           [--output-dir OUTPUT_DIR]
+                           [--chunk-seconds CHUNK_SECONDS] [--threads THREADS]
+                           [--beam-size BEAM_SIZE] [--glossary GLOSSARY]
+                           [--keep-temp] [--quiet]
+                           input
+
+Offline long-audio transcription with ffmpeg and pywhispercpp.
+
+positional arguments:
+  input                 Input audio/video file, e.g. recording.m4a
+
+options:
+  -h, --help            show this help message and exit
+  --model MODEL         whisper.cpp model name
+                        (tiny/base/small/medium/large-v3-turbo) or a local
+                        ggml model path. Default: tiny
+  --language LANGUAGE   Language code. Default: zh
+  --output-dir OUTPUT_DIR
+                        Output directory
+  --chunk-seconds CHUNK_SECONDS
+                        Chunk length in seconds. Default: 60
+  --threads THREADS     CPU threads used by whisper.cpp
+  --beam-size BEAM_SIZE
+                        Beam search size; set 1 for greedy decoding
+  --glossary GLOSSARY   UTF-8 text file containing one domain term per line
+  --keep-temp           Keep normalized WAV and chunks
+  --quiet               Reduce console output

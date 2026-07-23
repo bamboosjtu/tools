@@ -1,0 +1,18 @@
+# 每行一个术语，以 # 开头的行会被忽略。
+# 术语表会作为 Whisper initial_prompt 提高识别倾向，但不能保证识别正确。
+DCP Lite
+GIM
+GIM Viewer
+OpenCode
+SDK
+CLI
+Skill
+Vibe Coding
+Vibe Research
+Agentic AI
+数字孪生
+输变电工程
+电网信息模型
+线路工程
+变电工程
+7-Zip

@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Packaging
+build/
+dist/
+*.zip
+vendor/
+
+# Whisper models and partial downloads
+**/models/*.bin
+**/models/*.bin.part
+**/models/*.bin.corrupt
+
+# Generated transcripts and temporary audio
+output/
+transcript_output/
+*_debug_audio/
+*_work_*/
+
+# Private source recordings
+*.m4a
+*.mp3
+*.wav
+*.aac
+*.flac
+*.ogg
+*.wma
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini
