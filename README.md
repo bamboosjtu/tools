@@ -8,6 +8,7 @@
 | 工具 | 用途 | 平台 |
 | --- | --- | --- |
 | `offline_audio_transcriber` | 使用本地 Whisper 模型把音频转换为文字稿和字幕 | Windows 64 位 |
+| `remove_watermark` | 移除 PDF 中后期叠加的平铺式文字水印 | Windows 64 位 |
 
 ## offline_audio_transcriber
 
@@ -56,6 +57,33 @@ cd .\offline_audio_transcriber
 
 更完整的安装、命令行使用和模型说明见
 [`offline_audio_transcriber/README.md`](offline_audio_transcriber/README.md)。
+
+## remove_watermark
+
+移除 PDF 中后期叠加的平铺式文字水印（斜排灰色公司名/人名/日期等）。默认走无损的
+整流移除：只删除水印内容流，正文、图片、版式不受影响；也可指定水印文字走精确删字
+兜底，与正文重叠的水印会被保护性跳过。
+
+### 使用
+
+1. 构建（或直接使用已构建的）`remove_watermark/dist/RemoveWatermark.exe`。
+2. 双击打开图形界面，或把 PDF 文件/文件夹直接拖到 exe 图标上自动处理。
+3. 输出为原文件旁的「xxx（无水印）.pdf」，不会覆盖原文件。
+
+拖拽、批量、水印文字等完整说明见
+[`remove_watermark/使用说明.txt`](remove_watermark/使用说明.txt)。
+
+### 从源码构建
+
+进入工具目录后运行：
+
+```powershell
+cd .\remove_watermark
+powershell -ExecutionPolicy Bypass -File .\build_windows.ps1
+```
+
+产物是单文件 `dist\RemoveWatermark.exe`，内含 Python 运行环境和 pymupdf，
+可直接拷到没装 Python 的电脑上运行。
 
 ## 隐私与仓库规则
 

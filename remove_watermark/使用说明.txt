@@ -1,0 +1,57 @@
+PDF 平铺水印移除工具 - 使用说明
+================================
+
+文件清单
+--------
+  RemoveWatermark.exe     独立可执行版（无需安装 Python，可发给同事直接用）
+  remove_watermark.py     Python 源码版（依赖 pymupdf：pip install pymupdf）
+  remove_watermark_gui.py 图形界面源码版
+
+
+用法（图形界面，推荐）
+----------------------
+1. 双击 RemoveWatermark.exe 打开主窗口
+2. 「添加 PDF…」可多选文件，「添加文件夹…」批量处理整个目录
+3. 「水印文字」留空 = 只用无损整流移除；填入文字可启用精确删字兜底
+4. 「输出目录」留空 = 输出到原文件所在目录
+5. 点「开始处理」，底部日志逐条显示结果
+
+最快的方式：把 PDF 文件或文件夹直接拖到 RemoveWatermark.exe 图标上，
+程序会自动打开、载入并开始处理。
+
+
+用法（命令行）
+--------------
+  python remove_watermark 输入.pdf                # 输出为 输入（无水印）.pdf
+  python remove_watermark 输入.pdf -o 输出.pdf     # 指定输出路径
+  python remove_watermark 输入.pdf -t "水印文字"   # 指定水印文字（兜底策略）
+  python remove_watermark 某个目录                # 批量处理目录下所有 PDF
+
+
+从源码构建 exe
+--------------
+进入本目录后运行：
+
+  powershell -ExecutionPolicy Bypass -File .\build_windows.ps1
+
+产物为 dist\RemoveWatermark.exe（单文件，内含 Python 运行环境和 pymupdf，
+拷到没装 Python 的电脑上可直接运行）。
+
+
+工作原理（两种策略）
+--------------------
+策略一（默认，无损）：水印通常由 iText/WPS 等工具后期追加为每页独立的
+  内容流，特征是"斜排旋转文字 + 灰色等值RGB填充 + 平铺重复"。工具直接
+  删除这些水印流，正文、图片、版式零损伤。
+
+策略二（指定水印文字时启用）：按给定文字精确匹配删除。斜排水印用精确
+  四边形定位；凡与正文文字重叠的水印实例会被保护性跳过——宁可漏删，
+  绝不误删正文。
+
+
+注意
+----
+- 已加密的 PDF 会被跳过。
+- 策略二对平铺在正文下方的水印可能只能清理部分（被正文保护跳过），
+  此时建议改用策略一能识别的水印结构，或联系文件提供方。
+- 输出文件不会覆盖输入文件，放心使用。
